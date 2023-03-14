@@ -7,8 +7,6 @@ class UpdateUsers < ActiveRecord::Migration[7.0]
       t.change :phone, :string, default: false, null: false
       t.change :role, :boolean, default: 0, null: false
       t.change :user_name, :string, default: "", null: false
-      t.index :email, unique: true
-      t.index :user_name, unique: true
     end
   end
 end
