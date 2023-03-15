@@ -6,4 +6,8 @@ class Ticket < ApplicationRecord
   has_many :seats
 
   validates :total_fare, presence: true
+
+  def total_price
+    self.seats.count * self.trip.ticket_price
+  end
 end
