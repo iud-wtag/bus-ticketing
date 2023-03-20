@@ -1,0 +1,19 @@
+<h1>Routes</h1>
+
+<table border = "2">
+  <tr>
+    <th>Id</th>
+    <th>Route Name</th>
+    <th>Route Source</th>
+    <th>Route Destination</th>
+  </tr>
+  <% @routes.each do |route| %>
+    <tr>
+      <td><%= route.id %></td>
+      <td><%= route.route_name %></td>
+      <td><%= route.route_source %></td>
+      <td><%= route.route_destination %></td>
+    </tr>
+  <% end %>
+  
+</table>
