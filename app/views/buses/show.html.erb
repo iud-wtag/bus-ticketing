@@ -1,0 +1,33 @@
+<h1> <%= @bus.bus_name %> </h1>
+
+
+<table border="1">
+  <tr>
+    <th>Bus Name</th>
+    <td> <%= @bus.bus_name %> </td>
+  </tr>
+  <tr>
+    <th>Bus Type</th>
+    <td> <%= @bus.bus_type %> </td>
+  </tr>
+  <tr>
+    <th>Bus Brand</th>
+    <td> <%= @bus.bus_brand %> </td>
+  </tr>
+  <tr>
+    <th>Bus Capacity</th>
+    <td> <%= @bus.bus_capacity %> </td>
+  </tr>
+</table>
+
+<ul>
+  <li>
+     <%= link_to "Edit", edit_bus_path(@bus) %> 
+  </>
+  <li>
+    <%= link_to "Destroy", bus_path(@bus), data:{
+      turbo_method: :delete,
+      turbo_confirm: "Are you sure?"
+    } %>
+  </li>
+</ul>

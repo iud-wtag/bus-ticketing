@@ -1,0 +1,25 @@
+<h1>Buses</h1>
+
+<table border = "2">
+  <tr>
+    <th>ID</th>
+    <th>Bus Name</th>
+    <th>Bus Type</th>
+    <th>Bus Brand</th>
+    <th>Bus Capacity</th>
+    <th>Details</th>
+  </tr>
+
+  <% @buses.each do |bus| %>
+    <tr>
+      <td><%= bus.id %></td>
+      <td><%= bus.bus_name %></td>
+      <td><%= bus.bus_type %></td>
+      <td><%= bus.bus_brand %></td>
+      <td><%= bus.bus_capacity %></td>
+      <td><%= link_to "view", bus %></td>
+    </tr>
+  <% end %>
+</table>
+<br>
+<%= link_to "Create New Bus", new_bus_path %>
