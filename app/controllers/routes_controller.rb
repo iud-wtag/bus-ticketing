@@ -45,11 +45,6 @@ class RoutesController < ApplicationController
       redirect_to routes_url
     end
   end
-  
-  
-
-  
-  
 
   private
     def route_params
