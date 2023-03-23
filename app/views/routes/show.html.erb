@@ -1,11 +1,21 @@
 <h1><%= @route.route_name %></h1>
-<p><b>Route Source:</b> <%= @route.route_source %></p>
-<p><b>Route Destination:</b> <%= @route.route_destination %></p>
+<p>
+  <b>Route Source:</b>
+  <%= @route.route_source %>
+</p>
+<p>
+  <b>Route Destination:</b> 
+  <%= @route.route_destination %>
+</p>
 
 <ul>
-  <li><%= link_to "Edit", edit_route_path(@route) %></li>
-  <li><%= link_to "Destroy", route_path(@route), data: {
-    turbo_method: :delete,
-    turbo_confirm: "Are you sure?"
-  } %></li>
+  <li>
+    <%= link_to "Edit", edit_route_path(@route) %>
+  </li>
+  <li>
+    <%= link_to "Destroy", route_path(@route), data: {
+      turbo_method: :delete,
+      turbo_confirm: "Are you sure?"
+    } %>
+  </li>
 </ul>
