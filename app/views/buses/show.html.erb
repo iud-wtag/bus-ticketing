@@ -1,6 +1,5 @@
 <h1> <%= @bus.bus_name %> </h1>
 
-
 <table border="1">
   <tr>
     <th>Bus Name</th>
@@ -29,5 +28,8 @@
       turbo_method: :delete,
       turbo_confirm: "Are you sure?"
     } %>
+  </li>
+  <li>
+    <%= link_to "View All Bus", buses_path %>
   </li>
 </ul>

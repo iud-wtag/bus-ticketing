@@ -1,0 +1,41 @@
+<%= form_with model: trip do |f| %>
+  <div>
+    <%= f.label :route %>
+    <%= f.select :route_id, Route.all.map{
+      |route| [route.route_name, route.id]
+    } %>
+  </div>
+  
+  <div>
+    <%= f.label :bus %>
+    <%= f.select :bus_id, Bus.all.map{
+      |bus| [bus.bus_name, bus.id]
+    } %>
+  </div>
+
+  <div>
+    <%= f.label :ticket_price %>
+    <%= f.number_field :ticket_price %>
+    <% trip.errors.full_messages_for(:ticket_price).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+
+  <div>
+    <%= f.label :total_booked %>
+    <%= f.number_field :total_booked %>
+    <% trip.errors.full_messages_for(:total_booked).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+
+  <div>
+    <%= f.label :trip_datetime %>
+    <%= f.datetime_field :trip_datetime %>
+  </div>
+
+  <div>
+    <%= f.submit %>
+  </div>
+
+<% end %>
