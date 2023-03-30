@@ -1,39 +1,25 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
+  describe "validations" do
+    subject { build(:user) }
+    
+    it { should validate_presence_of(:name) }
+    it { should validate_presence_of(:email) }
+    it { should validate_presence_of(:password) }
+    it { should validate_presence_of(:phone) }
+    it { should validate_presence_of(:user_name) }
+    it { should validate_presence_of(:role) }
 
-  subject { 
-    described_class.new( 
-      name: "Anything",
-      email: "abc@example.com",
-      password: "password1234",
-      phone: "12345678901",
-      user_name: "anything"
-    )
-  } 
-  it "is valid with valid attributes" do
-    expect(subject).to be_valid 
-  end 
+    it { should validate_length_of(:phone).is_equal_to(11) }
 
-  it "is not valid without a name" do
-    subject.name = nil
-    expect(subject).to_not be_valid
-  end  
+    it { should allow_value('email@example.com').for(:email) }
+    it { should_not allow_value('invalid_email').for(:email) }
 
-  it "is not valid without a email" do
-    subject.email = nil
-    expect(subject).to_not be_valid
-  end  
-  it "is not valid without a password" do
-    subject.password = nil
-    expect(subject).to_not be_valid
-  end 
-  it "is not valid without a phone" do 
-    subject.phone = nil
-    expect(subject).to_not be_valid
-  end 
-  it "is not valid without a user_name" do
-    subject.user_name = nil
-    expect(subject).to_not be_valid
-  end  
+    it { should validate_uniqueness_of(:email).with_message('has already been taken') }
+    it { should validate_uniqueness_of(:user_name).with_message('has already been taken') }
+
+    it { should define_enum_for(:role).with_values(user: 0, admin: 1) }
+
+  end
 end
