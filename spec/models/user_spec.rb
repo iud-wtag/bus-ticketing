@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe User, type: :model do
   describe "validations" do
-    subject { build(:user) }
+    let(:user) { FactoryBot.create(:user) }
     
     it { should validate_presence_of(:name) }
     it { should validate_presence_of(:email) }
@@ -22,7 +22,7 @@ RSpec.describe User, type: :model do
     it { should define_enum_for(:role).with_values(user: 0, admin: 1) }
     
     it 'has a valid factory' do
-      expect(subject).to be_valid
+      expect(user).to be_valid
     end
   end
 end
