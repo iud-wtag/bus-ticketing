@@ -20,6 +20,9 @@ RSpec.describe User, type: :model do
     it { should validate_uniqueness_of(:user_name).with_message('has already been taken') }
 
     it { should define_enum_for(:role).with_values(user: 0, admin: 1) }
-
+    
+    it 'has a valid factory' do
+      expect(subject).to be_valid
+    end
   end
 end
