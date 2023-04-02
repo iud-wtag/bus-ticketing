@@ -1,10 +1,11 @@
+require "faker"
 FactoryBot.define do
   factory :user do
-    name { "John Doe" }
-    email { "john.doe@example.com" }
-    password { "password123" }
-    phone { "12345678901" }
-    user_name { "johndoe" }
+    name { Faker::Name.name }
+    email { Faker::Internet.email }
+    password { Faker::Internet.password }
+    phone { Faker::PhoneNumber.cell_phone_in_e164 }
+    user_name { Faker::Internet.username }
     role { :user }
   end
 end
