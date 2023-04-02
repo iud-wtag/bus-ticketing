@@ -11,7 +11,7 @@ RSpec.describe User, type: :model do
     it { should validate_presence_of(:user_name) }
     it { should validate_presence_of(:role) }
 
-    it { should validate_length_of(:phone).is_equal_to(11) }
+    it { should allow_value('+01234567890').for(:phone) }
 
     it { should allow_value('email@example.com').for(:email) }
     it { should_not allow_value('invalid_email').for(:email) }
