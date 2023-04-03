@@ -2,8 +2,8 @@ require 'rails_helper'
 
 RSpec.describe User, type: :model do
   describe "validations" do
-    let(:user) { FactoryBot.create(:user) }
-    
+    let!(:user) { FactoryBot.create(:user) }
+
     it { should validate_presence_of(:name) }
     it { should validate_presence_of(:email) }
     it { should validate_presence_of(:password) }
@@ -11,11 +11,12 @@ RSpec.describe User, type: :model do
     it { should validate_presence_of(:user_name) }
     it { should validate_presence_of(:role) }
 
-    it { should allow_value('+01234567890').for(:phone) }
+    it { should allow_value('5555555555').for(:phone) }
+    it { should_not allow_value("+01asasda0").for(:phone) }
 
     it { should allow_value('email@example.com').for(:email) }
     it { should_not allow_value('invalid_email').for(:email) }
-
+    
     it { should validate_uniqueness_of(:email).with_message('has already been taken') }
     it { should validate_uniqueness_of(:user_name).with_message('has already been taken') }
 
