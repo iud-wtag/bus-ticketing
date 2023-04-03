@@ -21,6 +21,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_03_091245) do
     t.integer "bus_capacity", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["bus_name"], name: "index_buses_on_bus_name", unique: true
   end
 
   create_table "users", force: :cascade do |t|

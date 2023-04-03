@@ -7,5 +7,7 @@ class CreateBuses < ActiveRecord::Migration[7.0]
       t.integer :bus_capacity, default:0, null: false
       t.timestamps
     end
+
+    add_index :buses, :bus_name, unique: true
   end
 end
