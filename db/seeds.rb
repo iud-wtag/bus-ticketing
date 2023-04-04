@@ -12,12 +12,20 @@ require "faker"
 end  
 
 5.times do
-  Bus.create(
+  bus = Bus.create(
     bus_name: Faker::Vehicle.license_plate,
     bus_type: ["AC","Non-AC"].sample,
     bus_brand: Faker::Vehicle.manufacture,
     bus_capacity: rand(1..50)
   )
+  bus_capacity = bus.bus_capacity
+  bus_capacity.times do |i|
+    Seat.create(
+      seat_name: [*('A'..'Z')].sample+[*('1'..'4')].sample,
+      seat_booked: [true,false].sample,
+      bus: bus
+    )
+  end  
 end
 
 5.times do
