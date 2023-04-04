@@ -1,5 +1,15 @@
 require 'rails_helper'
 
 RSpec.describe Seat, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe "validations of Seat" do
+    let(:seat) { FactoryBot.create(:seat) }  
+ 
+    it { should validate_presence_of(:seat_name) }
+    it { should validate_presence_of(:seat_booked) } 
+    it { should belong_to(:bus) } 
+
+    it 'has a valid factory' do
+      expect(seat).to be_valid
+    end
+  end
 end
