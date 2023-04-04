@@ -33,7 +33,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_03_140121) do
   end
 
   create_table "seats", force: :cascade do |t|
-    t.string "seat_name", default: "", null: false
+    t.string "seat_name", null: false
     t.boolean "seat_booked", default: false, null: false
     t.bigint "bus_id", null: false
     t.datetime "created_at", null: false
