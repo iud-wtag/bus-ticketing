@@ -1,4 +1,3 @@
-require "faker"
 FactoryBot.define do
   factory :trip do
     ticket_price { rand(500..1000) }
