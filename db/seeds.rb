@@ -35,3 +35,13 @@ end
     route_name: "#{Faker::Address.city_prefix}-#{Faker::Address.city_suffix}"
   )
 end
+
+5.times do
+  Trip.create(
+    bus: Bus.all.sample,
+    route: Route.all.sample,
+    ticket_price: rand(500..1000),
+    total_booked: rand(0..50),
+    trip_datetime: Faker::Time.between(from: DateTime.now - 1, to: DateTime.now, format: :default) 
+  )
+end  
