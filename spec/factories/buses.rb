@@ -1,4 +1,3 @@
-require "faker"
 FactoryBot.define do
   factory :bus do
     bus_name { Faker::Vehicle.license_plate }
