@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Route, type: :model do
+RSpec.describe Route do
   describe "validations" do
     let!(:route) { FactoryBot.create(:route) }
 

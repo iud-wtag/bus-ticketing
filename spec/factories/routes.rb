@@ -1,4 +1,3 @@
-require "faker"
 FactoryBot.define do
   factory :route do
     route_source { Faker::Address.city }
