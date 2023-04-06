@@ -10,9 +10,9 @@ RSpec.describe Route do
     it { should validate_uniqueness_of(:name).with_message('has already been taken') }
 
     
-    it { should allow_value("somevalue").for(:name) } 
-    it { should allow_value("somevalue").for(:source) } 
-    it { should allow_value("somevalue").for(:destination) } 
+    it { should allow_value("letterOnly").for(:name) } 
+    it { should allow_value("letterOnly").for(:source) } 
+    it { should allow_value("letterOnly").for(:destination) } 
 
     it { should_not allow_value("123asdasd").for(:name) } 
     it { should_not allow_value("123asdasd").for(:source) } 
