@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe Seat do
+  let(:seat) { FactoryBot.create(:seat) }  
   describe "validations of Seat" do
-    let(:seat) { FactoryBot.create(:seat) }  
  
     it { should validate_presence_of(:name) }
     it { should allow_value("A1").for(:name) } 
