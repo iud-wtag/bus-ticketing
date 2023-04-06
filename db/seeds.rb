@@ -13,10 +13,10 @@ end
 
 5.times do
   Bus.create(
-    bus_name: Faker::Vehicle.license_plate,
-    bus_type: ['AC','NON_AC'].sample,
-    bus_brand: Faker::Vehicle.manufacture,
-    bus_capacity: rand(1..50)
+    name: Faker::Vehicle.license_plate,
+    type: ['AC','NON_AC'].sample,
+    brand: Faker::Vehicle.manufacture,
+    capacity: rand(1..50)
   )
 end
 
