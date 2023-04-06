@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Trip, type: :model do
+RSpec.describe Trip do
   describe "associations" do
     it { should belong_to(:bus) } 
     it { should belong_to(:route) } 
