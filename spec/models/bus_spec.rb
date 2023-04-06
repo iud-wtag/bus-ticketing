@@ -19,6 +19,8 @@ RSpec.describe Bus do
 
     it { should define_enum_for(:typed).with_values(AC: 0, NON_AC: 1) }
 
+    it { should have_many(:seats).dependent(:destroy) } 
+
     it "has a valid factory" do
       expect(bus).to be_valid
     end

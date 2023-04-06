@@ -21,8 +21,8 @@ end
   bus_capacity = bus.capacity
   bus_capacity.times do |i|
     Seat.create(
-      seat_name: [*('A'..'Z')].sample+[*('1'..'4')].sample,
-      seat_booked: [true,false].sample,
+      name: [*('A'..'Z')].sample+[*('1'..'4')].sample,
+      booked: [true,false].sample,
       bus: bus
     )
   end  
