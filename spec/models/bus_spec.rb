@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe Bus do
+  let!(:bus) { FactoryBot.create(:bus) }
   describe "bus model validations" do
-    let!(:bus) { FactoryBot.create(:bus) }
 
     it { should validate_presence_of(:name) }
     it { should validate_presence_of(:typed) }
