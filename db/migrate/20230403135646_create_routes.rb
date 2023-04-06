@@ -1,10 +1,12 @@
 class CreateRoutes < ActiveRecord::Migration[7.0]
   def change
     create_table :routes do |t|
-      t.string :route_name, null: false
-      t.string :route_source, null: false
-      t.string :route_destination, null: false
+      t.string :name, null: false, unique: true
+      t.string :source, null: false
+      t.string :destination, null: false
       t.timestamps
     end
+    
+    add_index :routes, :name, unique: true
   end
 end
