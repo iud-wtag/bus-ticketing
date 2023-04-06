@@ -17,6 +17,8 @@ RSpec.describe Bus do
     it { should_not allow_value("123somevalue").for(:brand) } 
     it { should_not allow_value("space text").for(:name) } 
 
+    it { should define_enum_for(:typed).with_values(AC: 0, NON_AC: 1) }
+
     it "has a valid factory" do
       expect(bus).to be_valid
     end
