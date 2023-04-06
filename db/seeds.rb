@@ -12,16 +12,16 @@ end
 
 5.times do
   bus = Bus.create(
-    bus_name: Faker::Vehicle.license_plate,
-    bus_type: ["AC","Non-AC"].sample,
-    bus_brand: Faker::Vehicle.manufacture,
-    bus_capacity: rand(1..50)
+    name: Faker::Vehicle.license_plate,
+    typed: ['AC','NON_AC'].sample,
+    brand: Faker::Vehicle.manufacture,
+    capacity: rand(1..50)
   )
   bus_capacity = bus.capacity
   bus_capacity.times do |i|
     Seat.create(
-      seat_name: [*('A'..'Z')].sample+[*('1'..'4')].sample,
-      seat_booked: [true,false].sample,
+      name: [*('A'..'Z')].sample+[*('1'..'4')].sample,
+      booked: [true,false].sample,
       bus: bus
     )
   end  
@@ -50,9 +50,9 @@ end
   trip = Trip.all.sample
   payment = Payment.create()
   seats_count = rand(1..5)
-  seats = Seat.where(bus_id: trip.bus_id, seat_booked: false).sample(seats_count)
+  seats = Seat.where(bus_id: trip.bus_id, booked: false).sample(seats_count)
   seats.each do |seat|
-    seat.update(seat_booked: true)
+    seat.update(booked: true)
     Ticket.create(user: user,bus: trip.bus, trip: trip, payment: payment, seats: [seat], total_fare: trip.ticket_price)
   end  
 end

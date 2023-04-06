@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Ticket, type: :model do
+RSpec.describe Ticket do
   let(:user) { create(:user) }
   let(:bus) { create(:bus) }
   let(:route) { create(:route) }
