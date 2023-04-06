@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe User do
+  let!(:user) { FactoryBot.create(:user) }
   describe "validations" do
-    let!(:user) { FactoryBot.create(:user) }
 
     it { should validate_presence_of(:name) }
     it { should validate_presence_of(:email) }
@@ -25,5 +25,9 @@ RSpec.describe User do
     it 'has a valid factory' do
       expect(user).to be_valid
     end
+  end
+
+  describe "associations" do
+    it { should have_many(:tickets).dependent(:destroy) } 
   end
 end
