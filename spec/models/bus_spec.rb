@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe Bus do
+  let!(:bus) { FactoryBot.create(:bus) }
   describe "bus model validations" do
-    let!(:bus) { FactoryBot.create(:bus) }
 
     it { should validate_presence_of(:name) }
     it { should validate_presence_of(:typed) }
@@ -18,11 +18,13 @@ RSpec.describe Bus do
     it { should_not allow_value("space text").for(:name) } 
 
     it { should define_enum_for(:typed).with_values(AC: 0, NON_AC: 1) }
-
-    it { should have_many(:seats).dependent(:destroy) } 
-
+    
     it "has a valid factory" do
       expect(bus).to be_valid
     end
-  end  
+  end
+
+  describe "bus model association" do
+    it { should have_many(:seats).dependent(:destroy) } 
+  end
 end
