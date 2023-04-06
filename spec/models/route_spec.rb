@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe Route do
+  let!(:route) { FactoryBot.create(:route) }
   describe "validations" do
-    let!(:route) { FactoryBot.create(:route) }
 
     it { should validate_presence_of(:name) }
     it { should validate_presence_of(:source) }
