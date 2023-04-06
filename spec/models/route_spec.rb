@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe Route do
+  let!(:route) { FactoryBot.create(:route) }
   describe "validations" do
-    let!(:route) { FactoryBot.create(:route) }
 
     it { should validate_presence_of(:name) }
     it { should validate_presence_of(:source) }
@@ -21,5 +21,8 @@ RSpec.describe Route do
     it 'has a valid factory' do
       expect(route).to be_valid
     end
+  end
+  describe "association" do
+    it { should have_many(:trips).dependent(:destroy) } 
   end
 end
