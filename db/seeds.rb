@@ -13,12 +13,12 @@ end
 
 5.times do
   bus = Bus.create(
-    bus_name: Faker::Vehicle.license_plate,
-    bus_type: ["AC","Non-AC"].sample,
-    bus_brand: Faker::Vehicle.manufacture,
-    bus_capacity: rand(1..50)
+    name: Faker::Vehicle.license_plate,
+    type: ['AC','NON_AC'].sample,
+    brand: Faker::Vehicle.manufacture,
+    capacity: rand(1..50)
   )
-  bus_capacity = bus.bus_capacity
+  bus_capacity = bus.capacity
   bus_capacity.times do |i|
     Seat.create(
       seat_name: [*('A'..'Z')].sample+[*('1'..'4')].sample,
@@ -30,8 +30,8 @@ end
 
 5.times do
   Route.create(
-    route_source: Faker::Address.city,
-    route_destination: Faker::Address.city,
-    route_name: "#{Faker::Address.city_prefix}-#{Faker::Address.city_suffix}"
+    source: Faker::Address.city,
+    destination: Faker::Address.city,
+    name: "#{Faker::Address.city_prefix}-#{Faker::Address.city_suffix}"
   )
 end

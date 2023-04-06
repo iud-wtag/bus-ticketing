@@ -15,21 +15,22 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_03_140121) do
   enable_extension "plpgsql"
 
   create_table "buses", force: :cascade do |t|
-    t.string "bus_name", null: false
-    t.string "bus_type", null: false
-    t.string "bus_brand", null: false
-    t.integer "bus_capacity", default: 0, null: false
+    t.string "name", null: false
+    t.integer "typed", null: false
+    t.string "brand", null: false
+    t.integer "capacity", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["bus_name"], name: "index_buses_on_bus_name", unique: true
+    t.index ["name"], name: "index_buses_on_name", unique: true
   end
 
   create_table "routes", force: :cascade do |t|
-    t.string "route_name", null: false
-    t.string "route_source", null: false
-    t.string "route_destination", null: false
+    t.string "name", null: false
+    t.string "source", null: false
+    t.string "destination", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_routes_on_name", unique: true
   end
 
   create_table "seats", force: :cascade do |t|
