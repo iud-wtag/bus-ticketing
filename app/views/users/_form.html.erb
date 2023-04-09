@@ -1,0 +1,48 @@
+<%= form_with model: user do |f| %>
+  <div>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+    <% user.errors.full_messages_for(:name).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+  <div>
+    <%= f.label :email %>
+    <%= f.email_field :email %>
+    <% user.errors.full_messages_for(:email).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+  <div>
+    <%= f.label :password %>
+    <%= f.password_field :password %>
+    <% user.errors.full_messages_for(:password).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+  <div>
+    <%= f.label :phone %>
+    <%= f.telephone_field :phone %>
+    <% user.errors.full_messages_for(:phone).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+  <div>
+    <%= f.label :user_name %>
+    <%= f.text_field :user_name %>
+    <% user.errors.full_messages_for(:user_name).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+   <div>
+    <%= f.label :role %>
+    <%= f.select :role, User.roles.keys %>
+    <% user.errors.full_messages_for(:role).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+
+  <div>
+    <%= f.submit %>
+  </div>
+<% end %>
