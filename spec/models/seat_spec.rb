@@ -15,6 +15,6 @@ RSpec.describe Seat do
   
   describe "association of Seat" do
     it { should belong_to(:bus) } 
-    it { should belong_to(:ticket) } 
+    it { should belong_to(:ticket).optional } 
   end
 end
