@@ -58,10 +58,10 @@ class BusesController < ApplicationController
       count = 0
       ('A'..'Z').each do |row|
         (1..@columns).each do |column|
-          @seats << Seat.create(name: row + column.to_s, bus: bus)
-          count += 1
           if count == capacity
             break
+          @seats << Seat.create(name: row + column.to_s, bus: bus)
+          count += 1
           end
         end 
         if count == capacity
