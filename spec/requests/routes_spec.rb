@@ -147,7 +147,7 @@ RSpec.describe "Routes", type: :request do
         }
       }
 
-      it "does not the the routes" do
+      it "does not update the the routes" do
         put route_path(route), params: invalid_attributes
         route.reload
         expect(route.name).to_not eq("")

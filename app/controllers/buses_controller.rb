@@ -15,7 +15,7 @@ class BusesController < ApplicationController
     @bus = Bus.new(bus_params)
     if @bus.save
       create_seats_for_bus(@bus, @bus.capacity)
-      flash[:success] = "Bus successfully created"
+      flash[:success] = "Bus was successfully Created"
       redirect_to @bus
     else
       flash[:error] = "Something went wrong"
