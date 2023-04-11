@@ -39,7 +39,7 @@ class RoutesController < ApplicationController
     @route = Route.find(params[:id])
     if @route.destroy
       flash[:success] = 'Route was successfully deleted.'
-      redirect_to root_path, status: :see_other
+      redirect_to @route, status: :see_other
     else
       flash[:error] = 'Something went wrong'
       redirect_to routes_url

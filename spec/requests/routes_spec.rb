@@ -82,7 +82,7 @@ RSpec.describe "Routes", type: :request do
       end
     end
 
-    context "with valid params" do
+    context "with invalid params" do
       let(:invalid_params) { 
         { route: {
             name: "",
@@ -169,9 +169,9 @@ RSpec.describe "Routes", type: :request do
       }.to change(Route, :count).by(-1)
     end
     
-    it "redirects to the root path" do
+    it "redirects to the routes list" do
       delete route_path(route)
-      expect(response).to redirect_to(root_path)
+      expect(response).to redirect_to(routes_path)
     end
 
     it "sets a success flash message" do
