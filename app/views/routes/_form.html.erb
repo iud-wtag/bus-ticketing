@@ -1,22 +1,22 @@
 <%= form_with model: route do |f| %>
   <div>
     <%= f.label :route_name %>
-    <%= f.text_field :route_name %>
-    <% route.errors.full_messages_for(:route_name).each do |message| %>
+    <%= f.text_field :name %>
+    <% route.errors.full_messages_for(:name).each do |message| %>
       <div><%= message %></div>
     <% end %>
   </div>
   <div>
     <%= f.label :route_source %>
-    <%= f.text_field :route_source %>
-    <% route.errors.full_messages_for(:route_source).each do |message| %>
+    <%= f.text_field :source %>
+    <% route.errors.full_messages_for(:source).each do |message| %>
       <div><%= message %></div>
     <% end %>
   </div>
   <div>
     <%= f.label :route_destination %>
-    <%= f.text_field :route_destination %>
-    <% route.errors.full_messages_for(:route_destination).each do |message| %>
+    <%= f.text_field :destination %>
+    <% route.errors.full_messages_for(:destination).each do |message| %>
       <div><%= message %></div>
     <% end %>
   </div>
