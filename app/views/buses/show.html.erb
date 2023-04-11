@@ -1,22 +1,22 @@
-<h1> <%= @bus.bus_name %> </h1>
+<h1> <%= @bus.name %> </h1>
 
 
 <table border="1">
   <tr>
     <th>Bus Name</th>
-    <td> <%= @bus.bus_name %> </td>
+    <td> <%= @bus.name %> </td>
   </tr>
   <tr>
     <th>Bus Type</th>
-    <td> <%= @bus.bus_type %> </td>
+    <td> <%= @bus.typed %> </td>
   </tr>
   <tr>
     <th>Bus Brand</th>
-    <td> <%= @bus.bus_brand %> </td>
+    <td> <%= @bus.brand %> </td>
   </tr>
   <tr>
     <th>Bus Capacity</th>
-    <td> <%= @bus.bus_capacity %> </td>
+    <td> <%= @bus.capacity %> </td>
   </tr>
 </table>
 
@@ -29,5 +29,8 @@
       turbo_method: :delete,
       turbo_confirm: "Are you sure?"
     } %>
+  </li>
+  <li>
+    <%= link_to "See Buses", buses_path %>
   </li>
 </ul>
