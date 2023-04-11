@@ -175,7 +175,7 @@ RSpec.describe "Buses", type: :request do
       }.to change(Bus, :count).by(-1)
     end
     
-    it "redirects to the root path" do
+    it "redirects to the buses list" do
       delete bus_path(bus)
       expect(response).to redirect_to(buses_path)
     end
