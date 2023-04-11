@@ -1,3 +1,3 @@
 class Payment < ApplicationRecord
-  has_one :ticket
+  has_one :ticket, dependent: :destroy
 end
