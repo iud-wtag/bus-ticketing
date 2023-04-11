@@ -14,8 +14,8 @@
   <% @trips.each do |trip| %>
     <tr>
       <td><%= trip.id %></td>
-      <td><%= trip.route.route_name %></td>
-      <td><%= trip.bus.bus_name %></td>
+      <td><%= trip.route.name %></td>
+      <td><%= trip.bus.name %></td>
       <td><%= trip.trip_datetime.to_date %></td>
       <td><%= trip.trip_datetime.strftime("%I:%M %P") %></td>
       <td><%= trip.ticket_price %></td>
@@ -27,3 +27,5 @@
 
 <br>
 <%= link_to "Create New Trip", new_trip_path %>
+<br>
+<%= link_to "Back to Home Page", root_path %>

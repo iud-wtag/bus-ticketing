@@ -2,14 +2,14 @@
   <div>
     <%= f.label :route %>
     <%= f.select :route_id, Route.all.map{
-      |route| [route.route_name, route.id]
+      |route| [route.name, route.id]
     } %>
   </div>
   
   <div>
     <%= f.label :bus %>
     <%= f.select :bus_id, Bus.all.map{
-      |bus| [bus.bus_name, bus.id]
+      |bus| [bus.name, bus.id]
     } %>
   </div>
 

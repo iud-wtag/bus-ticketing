@@ -1,9 +1,21 @@
-<h1><%= @trip.route.route_name %></h1>
+<h1>Trip Route: <%= @trip.route.name %></h1>
 
 <table border="1">
   <tr>
+    <th>Origin</th>
+    <td> <%= @trip.route.source %> </td>
+  </tr>
+  <tr>
+    <th>Destination</th>
+    <td> <%= @trip.route.destination %> </td>
+  </tr>
+  <tr>
+    <th>Bus Brand</th>
+    <td> <%= @trip.bus.brand %> </td>
+  </tr>
+  <tr>
     <th>Bus Name</th>
-    <td> <%= @trip.bus.bus_name %> </td>
+    <td> <%= @trip.bus.name %> </td>
   </tr>
   <tr>
     <th>Trip Date</th>
