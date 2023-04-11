@@ -30,7 +30,7 @@ class TripsController < ApplicationController
     @trip = Trip.find(params[:id])
       if @trip.update(trip_params)
         flash[:success] = "Trip was successfully updated"
-        redirect_to trips_url
+        redirect_to @trip
       else
         flash[:error] = "Something went wrong"
         render :edit, status: :unprocessable_entity

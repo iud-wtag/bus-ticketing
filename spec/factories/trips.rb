@@ -4,7 +4,7 @@ FactoryBot.define do
     total_booked { rand(0..50) }
     trip_datetime { Faker::Time.between(from: DateTime.now - 1, to: DateTime.now, format: :default) }
 
-    association :bus
-    association :route
+    bus_id { create(:bus).id }
+    route_id { create(:route).id }
   end
 end
