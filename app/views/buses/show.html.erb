@@ -20,17 +20,31 @@
   </tr>
 </table>
 
+<h3>Seats for <%= @bus.name %></h3>
+<table border=1>
+  <tr>
+    <th>Seat Name</th>
+    <th>Booked?</th>
+  </tr>
+  <% @bus.seats.each do |seat| %>
+    <tr>
+      <td> <%= seat.name %> </td>
+      <td> <%= seat.booked %> </td>
+    </tr>
+  <% end %>
+</table>
+
 <ul>
   <li>
-     <%= link_to "Edit", edit_bus_path(@bus) %> 
+     <%= link_to "Edit Bus", edit_bus_path(@bus) %> 
   </>
   <li>
-    <%= link_to "Destroy", bus_path(@bus), data:{
+    <%= link_to "Destroy Bus", bus_path(@bus), data:{
       turbo_method: :delete,
       turbo_confirm: "Are you sure?"
     } %>
   </li>
   <li>
-    <%= link_to "See Buses", buses_path %>
+    <%= link_to "See Buses List", buses_path %>
   </li>
 </ul>
