@@ -1,6 +1,6 @@
 class Seat < ApplicationRecord
   belongs_to :bus
-  has_one :ticket
-  validates :seat_name, presence:true
+  belongs_to :ticket, optional: true
 
+  validates :name, presence:true, format: { without: /\s/, message: "cannot contain spaces" }
 end

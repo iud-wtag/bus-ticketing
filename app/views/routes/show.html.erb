@@ -1,11 +1,11 @@
-<h1><%= @route.route_name %></h1>
+<h1><%= @route.name %></h1>
 <p>
   <b>Route Source:</b>
-  <%= @route.route_source %>
+  <%= @route.source %>
 </p>
 <p>
   <b>Route Destination:</b> 
-  <%= @route.route_destination %>
+  <%= @route.destination %>
 </p>
 
 <ul>
@@ -17,5 +17,8 @@
       turbo_method: :delete,
       turbo_confirm: "Are you sure?"
     } %>
+  </li>
+  <li>
+    <%= link_to "See Routes", routes_path %>
   </li>
 </ul>

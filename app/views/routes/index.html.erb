@@ -11,9 +11,9 @@
   <% @routes.each do |route| %>
     <tr>
       <td><%= route.id %></td>
-      <td><%= route.route_name %></td>
-      <td><%= route.route_source %></td>
-      <td><%= route.route_destination %></td>
+      <td><%= route.name %></td>
+      <td><%= route.source %></td>
+      <td><%= route.destination %></td>
       <td><%= link_to "view", route %></td>
     </tr>
   <% end %>
@@ -21,3 +21,5 @@
 </table>
 <br>
 <%= link_to "Create New Route", new_route_path  %>
+<br>
+<%= link_to "Back to Home Page", root_path %>

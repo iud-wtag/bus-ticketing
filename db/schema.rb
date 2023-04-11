@@ -10,17 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_15_085254) do
+ActiveRecord::Schema[7.0].define(version: 2023_04_06_052437) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "buses", force: :cascade do |t|
-    t.string "bus_name", default: "", null: false
-    t.string "bus_type", default: "", null: false
-    t.string "bus_brand", default: "", null: false
-    t.integer "bus_capacity", default: 0, null: false
+    t.string "name", null: false
+    t.integer "typed", null: false
+    t.string "brand", null: false
+    t.integer "capacity", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_buses_on_name", unique: true
   end
 
   create_table "payments", force: :cascade do |t|
@@ -29,16 +30,17 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_15_085254) do
   end
 
   create_table "routes", force: :cascade do |t|
-    t.string "route_name", default: "", null: false
-    t.string "route_source", default: "", null: false
-    t.string "route_destination", default: "", null: false
+    t.string "name", null: false
+    t.string "source", null: false
+    t.string "destination", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_routes_on_name", unique: true
   end
 
   create_table "seats", force: :cascade do |t|
-    t.string "seat_name", default: "", null: false
-    t.boolean "seat_booked", default: false, null: false
+    t.string "name", null: false
+    t.boolean "booked", default: false, null: false
     t.bigint "bus_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -62,7 +64,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_15_085254) do
   end
 
   create_table "trips", force: :cascade do |t|
-    t.integer "ticket_price", default: 0, null: false
+    t.integer "ticket_price", null: false
     t.integer "total_booked", default: 0, null: false
     t.datetime "trip_datetime", null: false
     t.bigint "bus_id", null: false
@@ -74,14 +76,14 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_15_085254) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "name", default: "", null: false
-    t.string "email", default: "", null: false
-    t.string "password", default: "", null: false
-    t.string "phone", default: "", null: false
+    t.string "name", null: false
+    t.string "email", null: false
+    t.string "phone", null: false
+    t.string "password", null: false
+    t.string "user_name", null: false
+    t.integer "role", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "user_name", default: "", null: false
-    t.integer "role", default: 0, null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["user_name"], name: "index_users_on_user_name", unique: true
   end

@@ -15,7 +15,7 @@ class RoutesController < ApplicationController
     @route = Route.new(route_params)
     if @route.save
       flash[:success] = "Route was successfully Created"
-      redirect_to root_path
+      redirect_to @route
     else
       render :new, status: :unprocessable_entity
     end
@@ -48,7 +48,7 @@ class RoutesController < ApplicationController
 
   private
     def route_params
-      params.require(:route).permit(:route_name, :route_destination, :route_source)
+      params.require(:route).permit(:name, :destination, :source)
     end 
   
 end
