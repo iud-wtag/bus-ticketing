@@ -147,7 +147,7 @@ RSpec.describe "Users", type: :request do
         expect(response).to redirect_to(user_path(user))
       end
     end
-    context "with valid parameters" do
+    context "with invalid parameters" do
       let(:invalid_attributes) do
         { user: {
             name: "",
