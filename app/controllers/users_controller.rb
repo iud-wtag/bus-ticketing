@@ -39,7 +39,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     if @user.destroy
       flash[:success] = 'User was successfully deleted.'
-      redirect_to root_path, status: :see_other
+      redirect_to @user, status: :see_other
     else
       flash[:error] = 'Something went wrong'
       redirect_to users_url

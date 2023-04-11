@@ -181,9 +181,9 @@ RSpec.describe "Users", type: :request do
         delete user_path(user)
       }.to change(User, :count).by(-1)
     end
-    it "redirects to the root path" do
+    it "redirects to the users list" do
       delete user_path(user)
-      expect(response).to redirect_to(root_path)
+      expect(response).to redirect_to(users_path)
     end
     it "sets a success flash message" do
       delete user_path(user)
