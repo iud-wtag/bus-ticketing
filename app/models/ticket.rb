@@ -3,7 +3,7 @@ class Ticket < ApplicationRecord
   belongs_to :bus
   belongs_to :trip
   belongs_to :payment
-  has_many :seats
+  has_many :seats, dependent: :destroy 
 
   validates :total_fare, presence: true
 

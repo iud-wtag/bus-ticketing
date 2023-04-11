@@ -13,13 +13,15 @@
   <% @buses.each do |bus| %>
     <tr>
       <td><%= bus.id %></td>
-      <td><%= bus.bus_name %></td>
-      <td><%= bus.bus_type %></td>
-      <td><%= bus.bus_brand %></td>
-      <td><%= bus.bus_capacity %></td>
+      <td><%= bus.name %></td>
+      <td><%= bus.typed %></td>
+      <td><%= bus.brand %></td>
+      <td><%= bus.capacity %></td>
       <td><%= link_to "view", bus %></td>
     </tr>
   <% end %>
 </table>
 <br>
 <%= link_to "Create New Bus", new_bus_path %>
+<br>
+<%= link_to "Back to Home Page", root_path %>

@@ -14,24 +14,9 @@ class BusesController < ApplicationController
   def create
     @bus = Bus.new(bus_params)
     if @bus.save
-      @columns = 4
-      @seats = []
-      bus_capacity = @bus.bus_capacity
-      count = 0
-      ('A'..'Z').each do |row|
-        (1..@columns).each do |column|
-          @seats << Seat.create(seat_name: row+column.to_s, bus: @bus)
-          bus_capacity-=1
-          if bus_capacity==0
-            break
-          end
-        end 
-        if bus_capacity==0
-          break
-        end
-      end 
-      flash[:success] = "Bus successfully created"
-      redirect_to root_path
+      create_seats_for_bus(@bus, @bus.capacity)
+      flash[:success] = "Bus was successfully Created"
+      redirect_to @bus
     else
       flash[:error] = "Something went wrong"
       render :new, status: :unprocessable_entity
@@ -45,6 +30,8 @@ class BusesController < ApplicationController
   def update
     @bus = Bus.find(params[:id])
       if @bus.update(bus_params)
+        @bus.seats.destroy_all
+        create_seats_for_bus(@bus, @bus.capacity)
         flash[:success] = "Bus was successfully updated"
         redirect_to @bus
       else
@@ -65,8 +52,27 @@ class BusesController < ApplicationController
   end
   
   private
+    def create_seats_for_bus(bus, capacity)
+      @columns = 4
+      @seats = []
+      count = 0
+      ('A'..'Z').each do |row|
+        (1..@columns).each do |column|
+          
+          if count == capacity
+            break
+          end
+          @seats << Seat.create(name: row + column.to_s, bus: bus)
+          count += 1
+        end 
+        if count == capacity
+          break
+        end
+      end 
+    end
+
     def bus_params
-      params.require(:bus).permit(:bus_name, :bus_type, :bus_brand, :bus_capacity)
+      params.require(:bus).permit(:name, :typed, :brand, :capacity)
     end 
 
 end
