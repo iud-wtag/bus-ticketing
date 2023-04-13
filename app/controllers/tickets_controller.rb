@@ -17,10 +17,6 @@ class TicketsController < ApplicationController
     @seats = @bus.seats.order(id: :asc)
   end  
 
-  def confirm_order
-    
-  end  
-
   def payment
     @seats = []
     params.each do |key,value|
@@ -33,9 +29,25 @@ class TicketsController < ApplicationController
       @seat_session = session[:seats] || []
       session[:seats] = @seats
       session[:trip] = params[:trip_id]
-      redirect_to confirm_order, status: :see_other
+      redirect_to show_payment_path, status: :see_other
     end
   end
+
+  def show_payment
+    @seats = session[:seats]
+    @trip = Trip.find_by(id: session[:trip])
+    @total = @trip.ticket_price * session[:seats].size
+  end
+
+  def confirm_order
+    @seats = session[:seats]
+    @trip = Trip.find_by(id: session[:trip])
+    @payment = Payment.create
+    @total = @seats.size * @trip.ticket_price
+    # Rest will be done from here
+
+    redirect_to action: 'index', status: :see_other
+  end  
   
   private
     def ticket_params
@@ -45,10 +57,11 @@ class TicketsController < ApplicationController
     def depend_params
       @source = Route.find_by(id: params[:source].presence)
       @destination = Route.where(source: params[:source].presence)
-      trip_date = DateTime.parse(params[:trip_datetime]).to_date
-      @trip = Trip.where(trip_datetime: trip_date.beginning_of_day..trip_date.end_of_day,
-                         route: Route.find_by(source: params[:source].presence,
-                                              destination: params[:destination].presence ))
+      if params[:trip_datetime].present?
+        trip_date = DateTime.parse(params[:trip_datetime]).to_date
+        @trip = Trip.where(trip_datetime: trip_date.beginning_of_day..trip_date.end_of_day,
+          route: Route.find_by(source: params[:source].presence,destination: params[:destination].presence ))
+      end
     end  
   
 end

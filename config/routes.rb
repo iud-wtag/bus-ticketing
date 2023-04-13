@@ -5,5 +5,7 @@ Rails.application.routes.draw do
 
   get 'select_trip', to: 'tickets#select_trip'
   get 'select_seat/:id', to: 'tickets#select_seat', as: "select_seat"
-  post 'payment/23', to: 'tickets#payment', as: 'payment'
+  post 'payment/:id', to: 'tickets#payment', as: 'payment'
+  get 'show_payment', to: 'tickets#show_payment'
+  post 'confirm_order', to: 'tickets#confirm_order'
 end

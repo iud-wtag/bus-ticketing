@@ -1,0 +1,16 @@
+<div>
+  <h1><u>Order Confirmation</u></h1>
+  <p>Number of Seats: <%= @seats.size %> </p>
+  <p>Ticket Price: <%= @trip.ticket_price %> </p>
+  <p>Total: <%= @total %> </p>
+</div>
+
+<%= form_with url:confirm_order_path, method: :post do |f| %>
+  <div>
+    <%= f.label :mobile %>
+    <%= f.number_field :number %>
+  </div>
+
+  <br>
+  <%= f.submit "Confirm" %>
+<% end %>
