@@ -1,0 +1,38 @@
+<%= form_with url:select_trip_path, method: :get do |f| %>
+  <div>
+    <%= f.label :From %>
+    <%= f.select :source, options_from_collection_for_select(@sources, "source", "source", params[:source]),{prompt: "- Please select -"},{onchange: "this.form.submit()"}  %>
+  </div>
+  <div>
+    <%= f.label :To %>
+    <%= f.select :destination, options_from_collection_for_select(@destinations, "destination", "destination", params[:destination]),{prompt: "- Please select -"},{onchange: "this.form.submit()"}  %>
+  </div>
+  <div>
+    <%= f.label :Date %>
+    <%= f.date_field :trip_datetime, { :value => Time.now.strftime(params[:trip_datetime]|| Date.today.to_s) ,onchange: "this.form.submit()"} %>
+  </div>
+<% end %>
+
+<br>
+<table border=1>
+  <tr>
+    <th>ID</th>
+    <th>Ticket Price</th>
+    <th>Date</th>
+    <th>Time</th>
+    <th>Bus</th>
+    <th>Route</th>
+    <th>Action</th>
+  </tr>
+  <% @trips.each do |trip| %>
+    <tr>
+      <td><%= trip.id %></td>
+      <td><%= trip.ticket_price %></td>
+      <td><%= trip.trip_datetime.to_date %></td>
+      <td><%= trip.trip_datetime.strftime("%I:%M %P") %></td>
+      <td><%= trip.bus.brand %></td>
+      <td><%= trip.route.name %></td>
+      <td><%= link_to "Buy Ticket", select_seat_path(trip) %></td>
+    </tr>
+  <% end %>
+</table>

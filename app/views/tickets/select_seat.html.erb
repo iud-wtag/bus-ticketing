@@ -1,0 +1,40 @@
+<h2><%= @trip.bus.brand %></h2>
+<table border=1>
+  <tr>
+    <th>Bus Number</th>
+    <th>Route</th>
+    <th>Date</th>
+    <th>Time</th>
+    <th>Ticket Price</th>
+  </tr>
+  <tr>
+    <td><%= @trip.bus.name %></td>
+    <td><%= @trip.route.name %></td>
+    <td><%= @trip.trip_datetime.to_date %></td>
+    <td><%= @trip.trip_datetime.strftime("%I:%M %P") %></td>
+    <td><%= @trip.ticket_price %></td>
+  </tr>
+</table>
+
+<h3>Choose your seat(s) </h3>
+<%= form_with url:payment_path, method: :post do |f| %>
+  <%= f.hidden_field :bus_id, {:value => @trip.bus.id} %>
+  <%= f.hidden_field :trip_id, {:value => @trip.id} %>
+  <%= f.hidden_field :route_id, {:value => @trip.route.id} %>
+  <div>
+    <% @seats.each do |seat| %>
+      <div>
+        <input 
+          type="checkbox" 
+          <%= seat.booked && "disabled" %> 
+          name=<%= seat.id %> 
+          id=<%= seat.id %> 
+          value=<%= seat.id %> 
+        >
+        <%= seat.name %>  
+      </div>
+    <% end %>
+  </div>
+  <br>
+  <%= f.submit "Continue" %>
+<% end %>

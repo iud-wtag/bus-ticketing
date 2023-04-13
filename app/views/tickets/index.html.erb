@@ -18,11 +18,9 @@
       <td><%= ticket.bus.name %></td>
       <td><%= ticket.trip.route.name %></td>
       <td>
-        <%= ticket.seats.size %>
         <% ticket.seats.each do |seat| %>
           <%= seat.name %>
-          <%= seat.booked %>
-          <br>
+          ,
         <% end %>
       </td>
       <td><%= ticket.total_fare %></td>
@@ -31,6 +29,6 @@
 </table>
 
 <br>
-<%= link_to "Create New Ticket", new_ticket_path %>
+<%= link_to "Book A Ticket", select_trip_path %>
 <br>
 <%= link_to "Back to Home Page", root_path %>
