@@ -1,0 +1,36 @@
+<h1>Tickets</h1>
+
+<table border = "1">
+  <tr>
+    <th>Id</th>
+    <th>Passenger Name</th>
+    <th>Passenger Mobile</th>
+    <th>Bus Number</th>
+    <th>Route Name</th>
+    <th>Seats</th>
+    <th>Total Price</th>
+  </tr>
+  <% @tickets.each do |ticket| %>
+    <tr>
+      <td><%= ticket.id %></td>
+      <td><%= ticket.user.name %></td>
+      <td><%= ticket.user.phone %></td>
+      <td><%= ticket.bus.name %></td>
+      <td><%= ticket.trip.route.name %></td>
+      <td>
+        <%= ticket.seats.size %>
+        <% ticket.seats.each do |seat| %>
+          <%= seat.name %>
+          <%= seat.booked %>
+          <br>
+        <% end %>
+      </td>
+      <td><%= ticket.total_fare %></td>
+    </tr>
+  <% end %>
+</table>
+
+<br>
+<%= link_to "Create New Ticket", new_ticket_path %>
+<br>
+<%= link_to "Back to Home Page", root_path %>

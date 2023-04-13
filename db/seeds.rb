@@ -21,7 +21,7 @@ end
   bus_capacity.times do |i|
     Seat.create(
       name: [*('A'..'Z')].sample+[*('1'..'4')].sample,
-      booked: [true,false].sample,
+      booked: false,
       bus: bus
     )
   end  
@@ -51,8 +51,9 @@ end
   payment = Payment.create()
   seats_count = rand(1..5)
   seats = Seat.where(bus_id: trip.bus_id, booked: false).sample(seats_count)
+  ticket = Ticket.create(user: user,bus: trip.bus, trip: trip, payment: payment, total_fare: trip.ticket_price*:seats.length)
   seats.each do |seat|
-    seat.update(booked: true)
-    Ticket.create(user: user,bus: trip.bus, trip: trip, payment: payment, seats: [seat], total_fare: trip.ticket_price)
+    seat.update(booked: true,ticket_id: ticket.id)
   end  
+
 end
