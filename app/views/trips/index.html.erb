@@ -1,4 +1,7 @@
 <h1>Trips</h1>
+<% if can? :manage, @trips %>
+  <%= link_to "Add Trips", new_trip_path%>
+ <% end %>
 
 <table border = "2">
   <tr>

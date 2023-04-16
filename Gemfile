@@ -78,6 +78,7 @@ group :test do
   gem "webdrivers"
 end
 
+gem 'cancancan'
 gem 'devise'
 gem 'pry'
 gem 'rails-controller-testing'

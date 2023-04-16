@@ -1,4 +1,7 @@
 class TripsController < ApplicationController
+  before_action :authenticate_user!
+  load_and_authorize_resource
+  
   def index
     @trips = Trip.all.order("id")
   end
