@@ -5,7 +5,9 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :tickets, dependent: :destroy
 
-  validates :name, :email, :password, :phone, :user_name, :role, presence: true
+  validates_confirmation_of :password
+
+  validates :name, :email, :phone, :user_name, :password, :role, presence: true
   validates :email, format: {with: URI::MailTo::EMAIL_REGEXP}
   validates :email, :user_name, uniqueness: {message: 'has already been taken'}
   phony_normalize :phone, default_country_code: 'US'
