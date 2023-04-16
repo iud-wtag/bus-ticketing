@@ -1,5 +1,6 @@
 class TicketsController < ApplicationController
   before_action :depend_params, only: %i[select_trip]
+  before_action :authenticate_user!, only: %i[confirm_order]
 
   def index
     @tickets = Ticket.all.order("id")
@@ -44,9 +45,30 @@ class TicketsController < ApplicationController
     @trip = Trip.find_by(id: session[:trip])
     @payment = Payment.create
     @total = @seats.size * @trip.ticket_price
-    # Rest will be done from here
+    @ticket = Ticket.new(total_fare: @total, user: current_user, trip: @trip, bus: @trip.bus, payment: @payment)
+    
+    for i in @seats
+      seat = @trip.bus.seats.find_by(id: i)
+      if seat.booked == true
+        flash[:alert] = "Seat already Booked!"
+        return redirect_to action: 'index', status: :see_other
+      end  
+    end
+    
+    if @ticket.save
+      for i in @seats
+        seat = @trip.bus.seats.find_by(id: i)
+        seat.update(booked: true, ticket: @ticket)
+      end
+      
+      flash[:notice] = 'Successfully booked'
+      redirect_to action: 'index', status: :see_other
 
-    redirect_to action: 'index', status: :see_other
+    else
+      flash[:alert] = "Booking Failed"
+      redirect_to action: 'index', status: :see_other
+    end  
+
   end  
   
   private
