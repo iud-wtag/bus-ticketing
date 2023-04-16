@@ -6,6 +6,7 @@ class UsersController < ApplicationController
 
   def show
     @user = current_user
+    @tickets = Ticket.where(user: @user)
   end
 
   def new

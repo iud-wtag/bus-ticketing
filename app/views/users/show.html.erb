@@ -1,1 +1,54 @@
 <h1>Hello <%= @user.name %></h1>
+<% user = @user %>
+<table border = "2">
+  <tr>
+    <th>Id</th>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Phone</th>
+    <th>user_name</th>
+  </tr>
+  <tr>
+    <td><%= user.id %></td>
+    <td><%= user.name %></td>
+    <td><%= user.email %></td>
+    <td><%= user.phone %></td>
+    <td><%= user.user_name %></td>
+    
+  </tr>
+</table>
+
+<h3>Booked Ticket by <%= user.name %></h3>
+<table border=1>
+  <tr>
+    <th>Id</th>
+    <th>Bus Number</th>
+    <th>Route Name</th>
+    <th>Seats</th>
+    <th>Trip Time</th>
+    <th>Booking Time</th>
+    <th>Total Price</th>
+  </tr>
+  <% @tickets.each do |ticket| %>
+    <tr>
+      <td><%= ticket.id %></td>
+      <td><%= ticket.bus.name %></td>
+      <td><%= ticket.trip.route.name %></td>
+      <td>
+        <% ticket.seats.each do |seat| %>
+          <%= seat.name %>
+          ,
+        <% end %>
+      </td>
+      <td>
+        <%= ticket.trip.trip_datetime.to_date %>, 
+        <%= ticket.trip.trip_datetime.strftime("%I:%M %P") %>
+      </td>
+      <td>
+        <%= ticket.created_at.to_date %>
+        <%= ticket.created_at.strftime("%I:%M %P") %>
+      </td>
+      <td><%= ticket.total_fare %></td>
+    </tr>
+  <% end %>
+</table>
