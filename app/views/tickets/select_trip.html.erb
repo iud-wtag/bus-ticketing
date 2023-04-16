@@ -12,7 +12,7 @@
   </div>
   <div>
     <%= f.label :Date %>
-    <%= f.date_field :trip_datetime, { :value => Time.now.strftime(params[:trip_datetime]|| Date.today.to_s) ,onchange: "this.form.submit()"} %>
+    <%= f.date_field :trip_datetime, {min: Date.today, :value => Time.now.strftime(params[:trip_datetime]|| Date.today.to_s) ,onchange: "this.form.submit()"} %>
   </div>
 <% end %>
 
