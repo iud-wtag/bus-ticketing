@@ -6,6 +6,10 @@ class TicketsController < ApplicationController
     @tickets = Ticket.all.order("id")
   end
 
+  def show
+    @ticket = Ticket.find(params[:id])
+  end
+
   def select_trip
     @sources = Route.select('DISTINCT ON (source) *')
     @destinations = @destination || []
@@ -51,7 +55,7 @@ class TicketsController < ApplicationController
       seat = @trip.bus.seats.find_by(id: i)
       if seat.booked == true
         flash[:alert] = "Seat already Booked!"
-        return redirect_to action: 'index', status: :see_other
+        return redirect_to action: 'select_trip', status: :see_other
       end  
     end
     
@@ -62,11 +66,11 @@ class TicketsController < ApplicationController
       end
       
       flash[:notice] = 'Successfully booked'
-      redirect_to action: 'index', status: :see_other
+      redirect_to profile_path, status: :see_other
 
     else
       flash[:alert] = "Booking Failed"
-      redirect_to action: 'index', status: :see_other
+      redirect_to action: 'select_trip', status: :see_other
     end  
 
   end  

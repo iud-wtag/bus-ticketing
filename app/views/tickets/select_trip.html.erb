@@ -1,3 +1,6 @@
+<h1>Welcome to Bus Ticketing System</h1>
+<h3>Please select your preference</h3>
+
 <%= form_with url:select_trip_path, method: :get do |f| %>
   <div>
     <%= f.label :From %>
@@ -14,6 +17,8 @@
 <% end %>
 
 <br>
+<h3>Bus List</h3>
+
 <table border=1>
   <tr>
     <th>ID</th>

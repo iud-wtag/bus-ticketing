@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
   devise_for :users
-  root 'tickets#index'
+  root 'tickets#select_trip'
 
   resources :routes, :buses, :trips, :tickets
+
+  get 'profile', to: 'users#show'
 
   get 'select_trip', to: 'tickets#select_trip'
   get 'select_seat/:id', to: 'tickets#select_seat', as: "select_seat"
