@@ -1,19 +1,29 @@
 <h1>Online Bus Ticket</h1>
 
-<ui>
-  <li>
-    <%= link_to "SEE USERS", users_path %>
-  </li>
-  <li>
-    <%= link_to "SEE ROUTES", routes_path %>
-  </li>
-  <li>
-    <%= link_to "SEE BUSES", buses_path %>
-  </li>
-  <li>
-    <%= link_to "SEE TRIPS", trips_path %>
-  </li>
-  <li>
-    <%= link_to "SEE TICKETS", tickets_path %>
-  </li>
-</ui>
+<% if can? :manage, @all %>
+  <h2>Hey Admin</h2>
+  <ui>
+    <li>
+      <%= link_to "SEE USERS", users_path %>
+    </li>
+    <li>
+      <%= link_to "SEE ROUTES", routes_path %>
+    </li>
+    <li>
+      <%= link_to "SEE BUSES", buses_path %>
+    </li>
+    <li>
+      <%= link_to "SEE TRIPS", trips_path %>
+    </li>
+    <li>
+      <%= link_to "SEE TICKETS", tickets_path %>
+    </li>
+  </ui>
+
+<% else %>
+  <h2>Welcome!</h2>
+  <ui>
+    <li> <%= link_to "Book Some Ticket", select_trip_path %></li>
+  </ui>
+  
+<% end %>

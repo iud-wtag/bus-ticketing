@@ -1,7 +1,4 @@
 <h1>Trips</h1>
-<% if can? :manage, @trips %>
-  <%= link_to "Add Trips", new_trip_path%>
- <% end %>
 
 <table border = "2">
   <tr>
@@ -12,7 +9,10 @@
     <th>Trip Time</th>
     <th>Ticket Price</th>
     <th>Total Booked</th>
-    <th>Detais</th>
+    <% if can? :manage, @trips %>
+      <th>Detais</th>
+    <% end %>
+    
   </tr>
   <% @trips.each do |trip| %>
     <tr>
@@ -23,12 +23,16 @@
       <td><%= trip.trip_datetime.strftime("%I:%M %P") %></td>
       <td><%= trip.ticket_price %></td>
       <td><%= trip.total_booked %></td>
-      <td><%= link_to "view", trip %></td>
+      <% if can? :manage, @trips %>
+        <td><%= link_to "view", trip %></td>
+      <% end %>
+      
     </tr>
   <% end %>
 </table>
 
 <br>
-<%= link_to "Create New Trip", new_trip_path %>
-<br>
+<% if can? :manage, @trips %>
+  <%= link_to "Create New Trip", new_trip_path %><br />
+<% end %>
 <%= link_to "Back to Home Page", root_path %>

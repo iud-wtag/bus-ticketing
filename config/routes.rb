@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
   devise_for :users
-  root 'tickets#select_trip'
+  # root 'tickets#select_trip'
+  root 'home#index'
 
-  resources :routes, :buses, :trips, :tickets
+  resources :routes, :buses, :trips, :tickets, :users
 
   get 'profile', to: 'users#show'
 
