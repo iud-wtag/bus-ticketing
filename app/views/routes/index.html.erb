@@ -6,10 +6,7 @@
     <th>Route Name</th>
     <th>Route Source</th>
     <th>Route Destination</th>
-    <% if can? :manage, @routes %>
-      <th>Details</th>
-    <% end %>
-    
+    <th>Details</th>
   </tr>
   <% @routes.each do |route| %>
     <tr>
@@ -17,10 +14,7 @@
       <td><%= route.name %></td>
       <td><%= route.source %></td>
       <td><%= route.destination %></td>
-      <% if can? :manage, @routes %>
-        <td><%= link_to "view", route %></td>
-      <% end %>
-      
+      <td><%= link_to "view", route %></td>
     </tr>
   <% end %>
 

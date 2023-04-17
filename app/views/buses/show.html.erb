@@ -34,15 +34,18 @@
 </table>
 
 <ul>
-  <li>
-     <%= link_to "Edit Bus", edit_bus_path(@bus) %> 
-  </>
-  <li>
-    <%= link_to "Destroy Bus", bus_path(@bus), data:{
-      turbo_method: :delete,
-      turbo_confirm: "Are you sure?"
-    } %>
-  </li>
+  <% if can? :manage, @buses %>
+    <li>
+      <%= link_to "Edit Bus", edit_bus_path(@bus) %> 
+    </>
+    <li>
+      <%= link_to "Destroy Bus", bus_path(@bus), data:{
+        turbo_method: :delete,
+        turbo_confirm: "Are you sure?"
+      } %>
+    </li>
+  <% end %>
+  
   <li>
     <%= link_to "View All Buses", buses_path %>
   </li>

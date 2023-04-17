@@ -9,9 +9,7 @@
     <th>Trip Time</th>
     <th>Ticket Price</th>
     <th>Total Booked</th>
-    <% if can? :manage, @trips %>
-      <th>Detais</th>
-    <% end %>
+    <th>Detais</th>
     
   </tr>
   <% @trips.each do |trip| %>
@@ -23,10 +21,7 @@
       <td><%= trip.trip_datetime.strftime("%I:%M %P") %></td>
       <td><%= trip.ticket_price %></td>
       <td><%= trip.total_booked %></td>
-      <% if can? :manage, @trips %>
-        <td><%= link_to "view", trip %></td>
-      <% end %>
-      
+      <td><%= link_to "view", trip %></td>
     </tr>
   <% end %>
 </table>

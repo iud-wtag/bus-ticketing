@@ -36,15 +36,18 @@
 </table>
 
 <ul>
-  <li>
-     <%= link_to "Edit", edit_trip_path(@trip) %> 
-  </>
-  <li>
-    <%= link_to "Destroy", trip_path(@trip), data:{
-      turbo_method: :delete,
-      turbo_confirm: "Are you sure?"
-    } %>
-  </li>
+  <% if can? :manage, @trips %>
+    <li>
+      <%= link_to "Edit", edit_trip_path(@trip) %> 
+    </>
+    <li>
+      <%= link_to "Destroy", trip_path(@trip), data:{
+        turbo_method: :delete,
+        turbo_confirm: "Are you sure?"
+      } %>
+    </li>
+  <% end %>
+  
   <li>
     <%= link_to "View All Trips", trips_path %>
   </li>

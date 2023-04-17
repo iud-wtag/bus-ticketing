@@ -7,10 +7,7 @@
     <th>Bus Type</th>
     <th>Bus Brand</th>
     <th>Bus Capacity</th>
-    <% if can? :manage, @buses %>
     <th>Details</th>
-    <% end %>
-
   </tr>
 
   <% @buses.each do |bus| %>
@@ -20,10 +17,7 @@
       <td><%= bus.typed %></td>
       <td><%= bus.brand %></td>
       <td><%= bus.capacity %></td>
-      <% if can? :manage, @buses %>
-        <td><%= link_to "view", bus %></td>
-      <% end %>
-      
+      <td><%= link_to "view", bus %></td>
     </tr>
   <% end %>
 </table>

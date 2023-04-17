@@ -9,15 +9,17 @@
 </p>
 
 <ul>
-  <li>
-    <%= link_to "Edit", edit_route_path(@route) %>
-  </li>
-  <li>
-    <%= link_to "Destroy", route_path(@route), data: {
-      turbo_method: :delete,
-      turbo_confirm: "Are you sure?"
-    } %>
-  </li>
+  <% if can? :manage, @routes %>
+    <li>
+      <%= link_to "Edit", edit_route_path(@route) %>
+    </li>
+    <li>
+      <%= link_to "Destroy", route_path(@route), data: {
+        turbo_method: :delete,
+        turbo_confirm: "Are you sure?"
+      } %>
+    </li>
+  <% end %>
   <li>
     <%= link_to "View All Routes", routes_path %>
   </li>
