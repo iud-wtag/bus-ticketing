@@ -4,26 +4,38 @@
   <h2>Hey Admin</h2>
   <ui>
     <li>
-      <%= link_to "SEE USERS", users_path %>
+      <%= link_to "MANAGE USERS", users_path %>
     </li>
     <li>
-      <%= link_to "SEE ROUTES", routes_path %>
+      <%= link_to "MANAGE ROUTES", routes_path %>
     </li>
     <li>
-      <%= link_to "SEE BUSES", buses_path %>
+      <%= link_to "MANAGE BUSES", buses_path %>
     </li>
     <li>
-      <%= link_to "SEE TRIPS", trips_path %>
+      <%= link_to "MANAGE TRIPS", trips_path %>
     </li>
     <li>
-      <%= link_to "SEE TICKETS", tickets_path %>
+      <%= link_to "MANAGE TICKETS", tickets_path %>
     </li>
   </ui>
 
 <% else %>
   <h2>Welcome!</h2>
   <ui>
-    <li> <%= link_to "Book Some Ticket", select_trip_path %></li>
+    <li> 
+      <%= link_to "Book Some Ticket", select_trip_path %>
+    </li>
+    <li> 
+      <%= link_to "See Available Routes", routes_path %>
+    </li>
+    <li> 
+      <%= link_to "Visit our Buses", buses_path %>
+    </li>
+    <li> 
+      <%= link_to "Have a look on our Trips", trips_path %>
+    </li>
+
   </ui>
   
 <% end %>
