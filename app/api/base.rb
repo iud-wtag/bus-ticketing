@@ -4,4 +4,5 @@ class Base < Grape::API
   prefix :api
 
   mount V1::Resources::Routes
+  mount V1::Resources::Buses
 end 
