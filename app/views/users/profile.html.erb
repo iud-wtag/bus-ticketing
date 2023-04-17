@@ -1,4 +1,4 @@
-<% if can? :manage, @users %>
+<h1>Hello <%= @user.user_name %></h1>
 <% user = @user %>
 <table border = "2">
   <tr>
@@ -7,7 +7,6 @@
     <th>Email</th>
     <th>Phone</th>
     <th>user_name</th>
-    <th>Role</th>
   </tr>
   <tr>
     <td><%= user.id %></td>
@@ -15,7 +14,6 @@
     <td><%= user.email %></td>
     <td><%= user.phone %></td>
     <td><%= user.user_name %></td>
-    <td><%= user.role %></td>
     
   </tr>
 </table>
@@ -54,20 +52,3 @@
     </tr>
   <% end %>
 </table>
-
-<ul>
-  
-    <li>
-      <%= link_to "Edit", edit_user_path(@user) %> 
-    </>
-    <li>
-      <%= link_to "Destroy", user_path(@user), data:{
-        turbo_method: :delete,
-        turbo_confirm: "Are you sure?"
-      } %>
-    </li>
-    <li>
-      <%= link_to "View All Users", users_path %>
-  </li>
-</ul>
-<% end %>

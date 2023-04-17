@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   resources :routes, :buses, :trips, :tickets, :users
 
-  get 'profile', to: 'users#show'
+  get 'profile', to: 'users#profile'
 
   get 'select_trip', to: 'tickets#select_trip'
   get 'select_seat/:id', to: 'tickets#select_seat', as: "select_seat"
