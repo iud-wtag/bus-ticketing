@@ -80,5 +80,7 @@ end
 
 gem 'cancancan'
 gem 'devise'
+gem 'grape'
+gem 'grape_on_rails_routes'
 gem 'pry'
 gem 'rails-controller-testing'

@@ -5,6 +5,8 @@ Rails.application.routes.draw do
 
   resources :routes, :buses, :trips, :tickets, :users
 
+  mount Base => '/'
+
   get 'profile', to: 'users#profile'
 
   get 'select_trip', to: 'tickets#select_trip'
