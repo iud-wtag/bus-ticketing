@@ -19,7 +19,7 @@ class TicketsController < ApplicationController
   def select_seat
     @trip = Trip.find_by(id: params[:id])
     @bus = Bus.find_by(id: @trip.bus.id)
-    @seats = @bus.seats.order(id: :asc)
+    @seats = @bus.seats.order(name: :asc)
   end  
 
   def payment
@@ -73,8 +73,21 @@ class TicketsController < ApplicationController
       flash[:alert] = "Booking Failed"
       redirect_to action: 'select_trip', status: :see_other
     end  
-
   end  
+
+  def destroy
+    @ticket = Ticket.find(params[:id])
+    @ticket.seats.each do |seat|
+      Seat.create(name: seat.name, bus: @ticket.bus)
+    end  
+    if @ticket.destroy
+      flash[:success] = 'Ticket was successfully deleted.'
+      redirect_to tickets_url
+    else
+      flash[:error] = 'Something went wrong'
+      redirect_to tickets_url
+    end
+  end
   
   private
     def ticket_params

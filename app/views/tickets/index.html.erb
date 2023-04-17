@@ -10,6 +10,7 @@
     <th>Route Name</th>
     <th>Seats</th>
     <th>Total Price</th>
+    <th>Actions</th>
   </tr>
   <% @tickets.each do |ticket| %>
     <tr>
@@ -25,6 +26,12 @@
         <% end %>
       </td>
       <td><%= ticket.total_fare %></td>
+      <td>
+      <%= link_to "Delete", ticket_path(ticket), data:{
+        turbo_method: :delete,
+        turbo_confirm: "Are you sure?"
+      } %>
+      </td>
     </tr>
   <% end %>
 </table>

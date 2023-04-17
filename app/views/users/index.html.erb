@@ -1,29 +1,30 @@
-<h1>Users</h1>
+<% if can? :manage, @users %>
+  <h1>Users</h1>
 
-<table border = "2">
-  <tr>
-    <th>Id</th>
-    <th>Name</th>
-    <th>Email</th>
-    <th>Phone</th>
-    <th>user_name</th>
-    <th>Role</th>
-    <th>Actions</th>
-  </tr>
-  <% @users.each do |user| %>
+  <table border = "2">
     <tr>
-      <td><%= user.id %></td>
-      <td><%= user.name %></td>
-      <td><%= user.email %></td>
-      <td><%= user.phone %></td>
-      <td><%= user.user_name %></td>
-      <td><%= user.role %></td>
-      
-      <td>
-      <%= link_to "view", user %>
-      </td>
+      <th>Id</th>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Phone</th>
+      <th>user_name</th>
+      <th>Role</th>
+      <th>Actions</th>
     </tr>
-  <% end %>
-</table>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.id %></td>
+        <td><%= user.name %></td>
+        <td><%= user.email %></td>
+        <td><%= user.phone %></td>
+        <td><%= user.user_name %></td>
+        <td><%= user.role %></td>
+        
+        <td>
+        <%= link_to "view", user %>
+        </td>
+      </tr>
+    <% end %>
+  </table>
 
-
+<% end %>
