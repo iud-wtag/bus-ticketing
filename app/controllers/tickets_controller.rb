@@ -64,6 +64,7 @@ class TicketsController < ApplicationController
         seat = @trip.bus.seats.find_by(id: i)
         seat.update(booked: true, ticket: @ticket)
       end
+      @trip.update(total_booked: @trip.total_booked + @seats.size)
       
       flash[:notice] = 'Successfully booked'
       redirect_to profile_path, status: :see_other

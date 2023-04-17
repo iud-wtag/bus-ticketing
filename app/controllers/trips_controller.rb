@@ -53,7 +53,7 @@ class TripsController < ApplicationController
   
   private
     def trip_params
-      params.require(:trip).permit(:ticket_price, :total_booked, :trip_datetime, :bus_id, :route_id)
+      params.require(:trip).permit(:ticket_price, :trip_datetime, :bus_id, :route_id)
     end
 
 end
