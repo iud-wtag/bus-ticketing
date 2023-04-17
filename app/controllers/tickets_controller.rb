@@ -1,7 +1,6 @@
 class TicketsController < ApplicationController
   before_action :depend_params, only: %i[select_trip]
   before_action :authenticate_user!, only: %i[confirm_order]
-  load_and_authorize_resource
 
   def index
     @tickets = Ticket.all.order("id")
