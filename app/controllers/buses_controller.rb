@@ -1,4 +1,7 @@
 class BusesController < ApplicationController
+  before_action :authenticate_user!
+  load_and_authorize_resource
+  
   def index
     @buses = Bus.all.order("id")
   end
