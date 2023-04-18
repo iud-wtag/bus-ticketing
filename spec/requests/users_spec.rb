@@ -3,6 +3,10 @@ require 'rails_helper'
 RSpec.describe "Users", type: :request do
   let!(:user) { FactoryBot.create(:user) }
 
+  before do
+    sign_in user
+  end
+
   describe "GET /users" do
     it "returns http success" do
       get users_path
@@ -39,17 +43,17 @@ RSpec.describe "Users", type: :request do
 
   describe "GET /users/new" do
     it "returns http success" do
-      get new_user_path
+      get new_user_registration_path
       expect(response).to have_http_status(:success)
     end
 
     it "renders the new template" do
-      get new_user_path
+      get new_user_registration_path
       expect(response).to render_template(:new)
     end
 
     it "assigns @user" do
-      get new_user_path
+      get new_user_registration_path
       expect(assigns(:user)).to be_a_new(User)
     end
   end
@@ -63,24 +67,24 @@ RSpec.describe "Users", type: :request do
             password: "password",
             phone: "1234567890",
             user_name: "johndoe",
-            role: "user"
+            role: 0
           }
         }
       }
       
       it "creates a new user" do
         expect {
-          post users_path, params: valid_params
+          post user_registration_path, params: valid_params
         }.to change(User, :count).by(1)
       end
 
       it "redirects to the created user" do
-        post users_path, params: valid_params
+        post user_registration_path, params: valid_params
         expect(response).to redirect_to(User.last)
       end
 
       it "sets a success flash message" do
-        post users_path, params: valid_params
+        post user_registration_path, params: valid_params
         expect(flash[:success]).to eq("User successfully created")
       end
     end
@@ -100,12 +104,12 @@ RSpec.describe "Users", type: :request do
 
       it "does not create a new user" do
         expect {
-          post users_path, params: invalid_params
+          post user_registration_path, params: invalid_params
         }.not_to change(User, :count)
       end
       
       it "renders the new template" do
-        post users_path, params: invalid_params
+        post user_registration_path, params: invalid_params
         expect(response).to render_template(:new) 
       end  
     end
