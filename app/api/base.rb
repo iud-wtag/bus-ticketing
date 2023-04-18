@@ -18,4 +18,5 @@ class Base < Grape::API
   mount V1::Resources::Buses
   mount V1::Resources::Trips
   mount V1::Resources::Users
+  mount V1::Resources::Tickets
 end 
