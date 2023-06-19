@@ -1,0 +1,24 @@
+<h1><%= @route.name %></h1>
+<p>
+  <b>Route Source:</b>
+  <%= @route.source %>
+</p>
+<p>
+  <b>Route Destination:</b> 
+  <%= @route.destination %>
+</p>
+
+<ul>
+  <li>
+    <%= link_to "Edit", edit_route_path(@route) %>
+  </li>
+  <li>
+    <%= link_to "Destroy", route_path(@route), data: {
+      turbo_method: :delete,
+      turbo_confirm: "Are you sure?"
+    } %>
+  </li>
+  <li>
+    <%= link_to "View All Routes", routes_path %>
+  </li>
+</ul>
