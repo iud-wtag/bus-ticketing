@@ -1,0 +1,30 @@
+<%= form_with model: bus do |f| %>
+  <div>
+    <%= f.label :bus_name %>
+    <%= f.text_field :name %>
+    <% bus.errors.full_messages_for(:name).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+  <div>
+    <%= f.label :bus_type %>
+    <%= f.select :typed,["AC","NON_AC"] %>
+  </div>
+  <div>
+    <%= f.label :bus_brand %>
+    <%= f.text_field :brand %>
+    <% bus.errors.full_messages_for(:brand).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+  <div>
+    <%= f.label :bus_capacity %>
+    <%= f.number_field :capacity %>
+    <% bus.errors.full_messages_for(:capacity).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+  <div>
+    <%= f.submit %>
+  </div>
+<% end %>

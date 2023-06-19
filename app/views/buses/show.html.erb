@@ -1,0 +1,50 @@
+<h1> <%= @bus.name %> </h1>
+
+
+<table border="1">
+  <tr>
+    <th>Bus Name</th>
+    <td> <%= @bus.name %> </td>
+  </tr>
+  <tr>
+    <th>Bus Type</th>
+    <td> <%= @bus.typed %> </td>
+  </tr>
+  <tr>
+    <th>Bus Brand</th>
+    <td> <%= @bus.brand %> </td>
+  </tr>
+  <tr>
+    <th>Bus Capacity</th>
+    <td> <%= @bus.capacity %> </td>
+  </tr>
+</table>
+
+<h3>Seats for <%= @bus.name %></h3>
+<table border=1>
+  <tr>
+    <th>Seat Name</th>
+    <th>Booked?</th>
+  </tr>
+  <% @bus.seats.each do |seat| %>
+    <tr>
+      <td> <%= seat.name %> </td>
+      <td> <%= seat.booked %> </td>
+    </tr>
+  <% end %>
+</table>
+
+<ul>
+  <li>
+     <%= link_to "Edit Bus", edit_bus_path(@bus) %> 
+  </>
+  <li>
+    <%= link_to "Destroy Bus", bus_path(@bus), data:{
+      turbo_method: :delete,
+      turbo_confirm: "Are you sure?"
+    } %>
+  </li>
+  <li>
+    <%= link_to "View All Buses", buses_path %>
+  </li>
+</ul>
