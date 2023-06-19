@@ -19,3 +19,11 @@ end
     capacity: rand(1..50)
   )
 end
+
+5.times do
+  Route.create(
+    source: Faker::Address.city,
+    destination: Faker::Address.city,
+    name: "#{Faker::Address.city_prefix}-#{Faker::Address.city_suffix}"
+  )
+end
