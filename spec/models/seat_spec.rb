@@ -12,7 +12,9 @@ RSpec.describe Seat do
       expect(seat).to be_valid
     end
   end
+  
   describe "association of Seat" do
     it { should belong_to(:bus) } 
+    it { should belong_to(:ticket).optional } 
   end
 end

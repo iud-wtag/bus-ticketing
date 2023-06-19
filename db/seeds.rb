@@ -13,7 +13,7 @@ end
 5.times do
   bus = Bus.create(
     name: Faker::Vehicle.license_plate,
-    type: ['AC','NON_AC'].sample,
+    typed: ['AC','NON_AC'].sample,
     brand: Faker::Vehicle.manufacture,
     capacity: rand(1..50)
   )
@@ -44,3 +44,15 @@ end
     trip_datetime: Faker::Time.between(from: DateTime.now - 1, to: DateTime.now, format: :default) 
   )
 end  
+
+2.times do
+  user = User.all.sample
+  trip = Trip.all.sample
+  payment = Payment.create()
+  seats_count = rand(1..5)
+  seats = Seat.where(bus_id: trip.bus_id, booked: false).sample(seats_count)
+  seats.each do |seat|
+    seat.update(booked: true)
+    Ticket.create(user: user,bus: trip.bus, trip: trip, payment: payment, seats: [seat], total_fare: trip.ticket_price)
+  end  
+end

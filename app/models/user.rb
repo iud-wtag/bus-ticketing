@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  has_many :tickets, dependent: :destroy
+
   validates :name, :email, :password, :phone, :user_name, :role, presence: true
   validates :email, format: {with: URI::MailTo::EMAIL_REGEXP}
   validates :email, :user_name, uniqueness: {message: 'has already been taken'}

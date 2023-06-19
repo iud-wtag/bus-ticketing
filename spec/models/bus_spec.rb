@@ -26,6 +26,7 @@ RSpec.describe Bus do
 
   describe "bus model association" do
     it { should have_many(:seats).dependent(:destroy) } 
+    it { should have_many(:tickets).dependent(:destroy) } 
     it { should have_one(:trip).dependent(:destroy) }
   end
 end
