@@ -10,3 +10,12 @@ require "faker"
     role: [:user, :admin].sample
   )
 end  
+
+5.times do
+  Bus.create(
+    name: Faker::Vehicle.license_plate,
+    type: ['AC','NON_AC'].sample,
+    brand: Faker::Vehicle.manufacture,
+    capacity: rand(1..50)
+  )
+end
