@@ -1,0 +1,51 @@
+<h1>Trip Route: <%= @trip.route.name %></h1>
+
+<table border="1">
+  <tr>
+    <th>Origin</th>
+    <td> <%= @trip.route.source %> </td>
+  </tr>
+  <tr>
+    <th>Destination</th>
+    <td> <%= @trip.route.destination %> </td>
+  </tr>
+  <tr>
+    <th>Bus Brand</th>
+    <td> <%= @trip.bus.brand %> </td>
+  </tr>
+  <tr>
+    <th>Bus Name</th>
+    <td> <%= @trip.bus.name %> </td>
+  </tr>
+  <tr>
+    <th>Trip Date</th>
+    <td> <%= @trip.trip_datetime.to_date %> </td>
+  </tr>
+  <tr>
+    <th>Trip Time</th>
+    <td> <%= @trip.trip_datetime.strftime("%I:%M %P") %> </td>
+  </tr>
+  <tr>
+    <th>Ticket Price</th>
+    <td> <%= @trip.ticket_price %> </td>
+  </tr>
+  <tr>
+    <th>Total Booked</th>
+    <td> <%= @trip.total_booked %> </td>
+  </tr>
+</table>
+
+<ul>
+  <li>
+     <%= link_to "Edit", edit_trip_path(@trip) %> 
+  </>
+  <li>
+    <%= link_to "Destroy", trip_path(@trip), data:{
+      turbo_method: :delete,
+      turbo_confirm: "Are you sure?"
+    } %>
+  </li>
+  <li>
+    <%= link_to "View All Trips", trips_path %>
+  </li>
+</ul>

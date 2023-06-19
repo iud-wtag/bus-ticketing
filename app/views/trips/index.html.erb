@@ -1,0 +1,31 @@
+<h1>Trips</h1>
+
+<table border = "2">
+  <tr>
+    <th>Id</th>
+    <th>Route Name</th>
+    <th>Bus Name</th>
+    <th>Trip Date</th>
+    <th>Trip Time</th>
+    <th>Ticket Price</th>
+    <th>Total Booked</th>
+    <th>Detais</th>
+  </tr>
+  <% @trips.each do |trip| %>
+    <tr>
+      <td><%= trip.id %></td>
+      <td><%= trip.route.name %></td>
+      <td><%= trip.bus.name %></td>
+      <td><%= trip.trip_datetime.to_date %></td>
+      <td><%= trip.trip_datetime.strftime("%I:%M %P") %></td>
+      <td><%= trip.ticket_price %></td>
+      <td><%= trip.total_booked %></td>
+      <td><%= link_to "view", trip %></td>
+    </tr>
+  <% end %>
+</table>
+
+<br>
+<%= link_to "Create New Trip", new_trip_path %>
+<br>
+<%= link_to "Back to Home Page", root_path %>
