@@ -22,4 +22,7 @@ RSpec.describe Route do
       expect(route).to be_valid
     end
   end
+  describe "association" do
+    it { should have_many(:trips).dependent(:destroy) } 
+  end
 end

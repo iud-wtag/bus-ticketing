@@ -1,5 +1,6 @@
 class Bus < ApplicationRecord
   has_many :seats, dependent: :destroy
+  has_one :trip, dependent: :destroy
   
   validates :name, :typed, :brand, :capacity, presence:true
   validates :capacity, numericality: { only_integer: true, less_than_or_equal_to: 50 }
