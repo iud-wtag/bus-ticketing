@@ -1,0 +1,31 @@
+<h1>User Details</h1>
+
+<ul>
+  <li>
+    <b>Name: </b> <%= @user.name %>
+  </li>
+  <li>
+    <b>Email: </b> <%= @user.email %>
+  </li>
+  <li>
+    <b>Phone: </b> <%= @user.phone %>
+  </li>
+  <li>
+    <b>User_name:</b> <%= @user.user_name %>
+  </li>
+  <li>
+    <b>Role: </b> <%= @user.role %>
+  </li>
+  <li>
+    <%= link_to "Edit", edit_user_path(@user) %>
+  </li>
+  <li>
+    <%= link_to "Destroy", user_path(@user), data: {
+      turbo_method: :delete,
+      turbo_confirm: "Are you sure?"
+    } %>
+  </li>
+  <li>
+    <%= link_to "View All Users", users_path %>
+  </li>
+</ul>
